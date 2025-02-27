@@ -69,7 +69,8 @@ class MainActivity : ComponentActivity() {
 fun TipTimeLayout() {
     /* *** amountInput will hold the value entered into the field */
     var amountInput by remember { mutableStateOf("") }
-    /* *** This will hold our numeric version for calculation */
+    /* *** This will hold our numeric version for calculation, checking to
+    * ensure we don't have a null value. */
     val amount = amountInput.toDoubleOrNull() ?: 0.0
     /* *** Calls the user defined function to figure out the tip amount */
     val tip = calculateTip(amount)
