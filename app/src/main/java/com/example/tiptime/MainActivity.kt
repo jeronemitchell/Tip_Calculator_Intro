@@ -81,6 +81,7 @@ fun TipTimeLayout() {
 
     val amount = amountInput.toDoubleOrNull() ?: 0.0
     val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
+    // *** Call the calculateTip method described below ***
     val tip = calculateTip(amount, tipPercent, roundUp)
 
     Column(
@@ -106,6 +107,7 @@ fun TipTimeLayout() {
                 imeAction = ImeAction.Next
             ),
             value = amountInput,
+            /* The value entered will be in "it" */
             onValueChanged = { amountInput = it },
             modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth(),
         )
@@ -143,12 +145,19 @@ fun EditNumberField(
     modifier: Modifier = Modifier
 ) {
     TextField(
+        /* Controls the number from the textfield */
         value = value,
+        /* Boolean to stay on one line */
         singleLine = true,
+        /* Controls the picture shown at the front of the textfield */
         leadingIcon = { Icon(painter = painterResource(id = leadingIcon), null) },
         modifier = modifier,
+        /* Establishes what to do if the value changes */
         onValueChange = onValueChanged,
+        /* Controls the words on the text field to start */
         label = { Text(stringResource(label)) },
+        /* Modifies the values that can be entered in the keyboard;
+        * this is NOT a "type", but what "letters and numbers" appear */
         keyboardOptions = keyboardOptions
     )
 }
